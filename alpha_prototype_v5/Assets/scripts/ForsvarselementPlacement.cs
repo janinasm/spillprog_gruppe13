@@ -88,7 +88,6 @@ public class ForsvarselementPlacement : MonoBehaviour
             // den ikke skal være det valgte objektet
             forrigeForsvarselement.settSomValgt(false);
         }
-
     }
 
     // lager gameobject sendt fra ForsvarselementManager
