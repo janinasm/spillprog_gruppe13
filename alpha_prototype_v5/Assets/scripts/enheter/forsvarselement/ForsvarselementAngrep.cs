@@ -15,12 +15,14 @@ public class ForsvarselementAngrep : MonoBehaviour
 
     // script referanser
     private Forsvarselement forsvarselement;
+    private SelectedForsvarselement selectedForsvarselement;
 
     void Start()
     {
         // cacher referanser
         scriptHolder = GameObject.Find("ScriptHolder");
         forsvarselement = GetComponent<Forsvarselement>();
+        selectedForsvarselement = GetComponent<SelectedForsvarselement>();
 
         resetSkytePosisjon = skytePosisjon.position;
         resetSkytePosisjon.y = skytePosisjon.transform.position.y;
@@ -28,8 +30,8 @@ public class ForsvarselementAngrep : MonoBehaviour
 
     void Update()
     {
-        // dersom gameobjektet er plassert i spillverden
-        if (scriptHolder.GetComponent<ForsvarselementPlacement>().erPlassert)
+        // dersom gameobjektet er plassert i spillverden og det ikke er valgt (klikket på) av spilleren
+        if (scriptHolder.GetComponent<ForsvarselementPlacement>().erPlassert && !selectedForsvarselement.erValgt)
         {
             // holder på tid gått
             tid += Time.deltaTime;
